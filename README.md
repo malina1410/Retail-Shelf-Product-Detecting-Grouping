@@ -144,9 +144,6 @@ Response:
 
 
 Visualization Service – /visualize (POST)
-<img width="261" height="680" alt="image" src="https://github.com/user-attachments/assets/e381fc7e-dacc-4fcb-a220-696fa7ec70ae" />
-
-<img width="302" height="793" alt="image" src="https://github.com/user-attachments/assets/1a32e0d0-4182-4346-af3f-a4bf9501da23" />
-
+![Image](https://github.com/user-attachments/assets/f45c360d-6900-4bd5-b423-cb53edd4a5c6)
 
 Draws cluster-based color-coded bounding boxes on the image
