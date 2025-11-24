@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <title>Upload Image for Product Detection</title>
+  <style>
+    .flex-container {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .column {
+      width: 48%;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow-wrap: break-word;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .toggle-button {
+      margin-left: 10px;
+      cursor: pointer;
+      color: blue;
+      font-size: 0.9em;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function toggleVisibility(id) {
+      const el = document.getElementById(id);
+      if (el.style.display === "none") {
+        el.style.display = "block";
+      } else {
+        el.style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Upload Image for Product Detection</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if result %}
+    <hr>
+
+    {% if result.status != "success" %}
+      <p style="color:red;">Error: {{ result.message }}</p>
+    {% else %}
+
+      <div class="flex-container">
+        <!-- Left: Detections -->
+        <div class="column">
+          <h3>
+            Detections (Raw)
+            <span class="toggle-button" onclick="toggleVisibility('detections-json')">[Collapse or Expand]</span>
+          </h3>
+          <pre id="detections-json">{{ result.detections | tojson(indent=2) }}</pre>
+        </div>
+
+        <!-- Right: Grouped JSON -->
+        <div class="column">
+          <h3>
+            Grouped Data (Raw JSON)
+            <span class="toggle-button" onclick="toggleVisibility('grouped-json')">[Collapse or Expand]</span>
+          </h3>
+          <pre id="grouped-json">{{ result.groups | tojson(indent=2) }}</pre>
+        </div>
+      </div>
+
+      {% if result.grouped_image_url %}
+        <h3>Grouped Visualization:</h3>
+        <img src="{{ result.grouped_image_url }}" width="600">
+      {% endif %}
+
+    {% endif %}
+  {% endif %}
+</body>
+</html>
