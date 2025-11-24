@@ -149,3 +149,5 @@ Visualization Service – /visualize (POST)
 Draws cluster-based color-coded bounding boxes on the image
 ```
 ![Image](https://github.com/user-attachments/assets/f45c360d-6900-4bd5-b423-cb53edd4a5c6)
+
+![Image](https://github.com/user-attachments/assets/e0689c84-f39a-4297-b0ec-508ac6fb648c)
